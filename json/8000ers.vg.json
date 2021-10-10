@@ -1,0 +1,65 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": " 8000ers Mountains" },
+    "width": 400,
+    "height": 800,
+    "data": {
+      "url": "https://raw.githubusercontent.com/shouryaraj/FIT3179/main/top_ten_mountains.csv"
+    },
+    "encoding": {
+          "x": {
+            "field": "mountain_name",
+            "type": "ordinal",
+            "title": "Mountain Name",
+            "sort": "-y"
+          },
+          "y": {
+            "field": "height",
+            "type": "quantitative",
+            "title": "Height (meters)",
+            "scale": { "domain": [8000, 8850] }
+          }
+      },
+    "layer": [
+      {
+        "mark": { "type": "point", "filled": true },
+        "encoding": {
+          "shape": {
+            "value": "M260,150.168V110h109.271l-27.5-55l27.5-55H230v150.168L2.821,466.145L0,470.167V490h475l15-0.1v-19.833L260,150.168z M260,30h60.729l-12.5,25l12.5,25H260V30zM245,180.695l94.541,131.495l-36.1,24.595L245,296.771l-58.441,40.014l-36.1-24.595L245,180.695z M44.188,460l88.753-123.444l53.66,36.56L245,333.129l58.399,39.986l53.66-36.56L445.813,460H44.188z"
+          },
+          "color": {
+            "condition": { "param": "highlight", "value": "rgb(194,81,64)" },
+            "value": "rgb(167,165,156)"
+          },
+          "size": { "value": 0.01 },
+          "tooltip": [
+            { "field": "height", "type": "quantitative" },
+            { "field": "mountain_name", "type": "ordinal" }
+          ]
+        },
+        "params": [{ "name": "highlight", "select": "interval" }]
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dx": 70,
+          "dy": 15,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": { "field": "mountain_name", "type": "ordinal" },
+          "color": { "value": "black" },
+          "opacity": {
+            "condition": {
+              "test": "datum['mountain_name'] == 'Everest' | datum['mountain_name'] == 'Manaslu'", 
+              "value" : 1
+            }, "value" : 0
+          }
+        }
+      }
+    ]
+  }
+  

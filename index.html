@@ -5,6 +5,12 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+  crossorigin="anonymous"
+/>
   
   
   <!-- CSS file
@@ -12,28 +18,33 @@
   
 </head>
 <style>
-  .container-style {
-    background-color: rgb(242,240,243);
-  }
+
 </style>
 <body>
   <div class="container-style">
-<div>
-  <p>Dream Death Zone</p>
+<div class="p-4">
+  <p class="h1 d-flex justify-content-center">Mount Everest</p>
 </div>
 <div>
 
 </div>
-<div id="symbol_map"></div>
+<div class="d-flex flex-column" id="mainBody">
+  <div id="symbol_map"></div>
+  <div id="highestmountains"></div>
+</div>
 
 
 <script type="text/javascript">
-
   var spec1 = "json/map.vg.json";
   vegaEmbed('#symbol_map', spec1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
-  
+  var spec2 = "json/8000ers.vg.json";
+    vegaEmbed("#highestmountains", spec2)
+      .then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      })
+      .catch(console.error);
 </script>
 
 </body>
